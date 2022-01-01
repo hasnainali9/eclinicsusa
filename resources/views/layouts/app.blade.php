@@ -9,75 +9,45 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-
-    <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
-    <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/frontend/styles.css') }}" rel="stylesheet">
 </head>
 <body>
-    <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
-                </a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav me-auto">
-
-                    </ul>
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ms-auto">
-                        <!-- Authentication Links -->
-                        @guest
-                            @if (Route::has('login'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                                </li>
-                            @endif
-
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
-                        @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
-                        @endguest
-                    </ul>
-                </div>
-            </div>
-        </nav>
-
-        <main class="py-4">
             @yield('content')
-        </main>
-    </div>
+
+        <script type="text/javascript" src="/js/frontend/jquery.min.js"></script>
+        <script type="text/javascript" src="/js/frontend/jquery-ui.min.js"></script>
+        <script type="text/javascript" src="/js/frontend/jquery.migrate.min.js"></script>
+        <script type="text/javascript" src="/js/frontend/owl.carousel.min.js"></script>
+        <script type="text/javascript" src="/js/frontend/jquery.isotope.min.js"></script>
+        <script type="text/javascript" src="/js/frontend/jquery.fancybox.pack.js"></script>
+        <script type="text/javascript" src="/js/frontend/jquery.fancybox-media.js"></script>
+        <script type="text/javascript" src="/js/frontend/jquery.flot.js"></script>
+        <script type="text/javascript" src="/js/frontend/jquery.flot.pie.js"></script>
+        <script type="text/javascript" src="/js/frontend/jquery.flot.categories.js"></script>
+        <script type="text/javascript" src="/js/frontend/greensock.js"></script>
+        <script type="text/javascript" src="/js/frontend/layerslider.transitions.js"></script>
+        <script type="text/javascript" src="/js/frontend/layerslider.kreaturamedia.jquery.js"></script>
+
+    <!-- Superscrollorama -->       
+        <script type="text/javascript" src="/js/frontend/jquery.superscrollorama.js"></script>
+        <script type="text/javascript" src="/js/frontend/TweenMax.min.js"></script>
+        <script type="text/javascript" src="/js/frontend/TimelineMax.min.js"></script>
+    <!--/ Superscrollorama -->
+    
+        <script type="text/javascript" src="/js/frontend/jquery.ui.core.min.js"></script>
+        <script type="text/javascript" src="/js/frontend/jquery.ui.widget.min.js"></script>
+        <script type="text/javascript" src="/js/frontend/jquery.ui.tabs.min.js"></script>
+        <script type="text/javascript" src="/js/frontend/jquery-ui-tabs-rotate.js"></script>
+        <script type="text/javascript" src="/js/frontend/jquery.ui.accordion.min.js"></script>
+        <script type="text/javascript" src="/js/frontend/jquery.tweet.js"></script>
+    <!-- EASYPIECHART -->
+        <script type="text/javascript" src="/js/frontend/jquery.easypiechart.js"></script>
+    <!--/ EASYPIECHART -->
+        <script type="text/javascript" src="/js/frontend/jquery.autocomplete.min.js"></script>
+        <script type="text/javascript" src="/js/frontend/scripts.js"></script>
 </body>
 </html>

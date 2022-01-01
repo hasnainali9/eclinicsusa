@@ -1,132 +1,688 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layouts.app')
 
-        <title>Laravel</title>
+@section('content')
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<div class="page">
 
-        <!-- Styles -->
-        <style>
-            /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */html{line-height:1.15;-webkit-text-size-adjust:100%}body{margin:0}a{background-color:transparent}[hidden]{display:none}html{font-family:system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;line-height:1.5}*,:after,:before{box-sizing:border-box;border:0 solid #e2e8f0}a{color:inherit;text-decoration:inherit}svg,video{display:block;vertical-align:middle}video{max-width:100%;height:auto}.bg-white{--bg-opacity:1;background-color:#fff;background-color:rgba(255,255,255,var(--bg-opacity))}.bg-gray-100{--bg-opacity:1;background-color:#f7fafc;background-color:rgba(247,250,252,var(--bg-opacity))}.border-gray-200{--border-opacity:1;border-color:#edf2f7;border-color:rgba(237,242,247,var(--border-opacity))}.border-t{border-top-width:1px}.flex{display:flex}.grid{display:grid}.hidden{display:none}.items-center{align-items:center}.justify-center{justify-content:center}.font-semibold{font-weight:600}.h-5{height:1.25rem}.h-8{height:2rem}.h-16{height:4rem}.text-sm{font-size:.875rem}.text-lg{font-size:1.125rem}.leading-7{line-height:1.75rem}.mx-auto{margin-left:auto;margin-right:auto}.ml-1{margin-left:.25rem}.mt-2{margin-top:.5rem}.mr-2{margin-right:.5rem}.ml-2{margin-left:.5rem}.mt-4{margin-top:1rem}.ml-4{margin-left:1rem}.mt-8{margin-top:2rem}.ml-12{margin-left:3rem}.-mt-px{margin-top:-1px}.max-w-6xl{max-width:72rem}.min-h-screen{min-height:100vh}.overflow-hidden{overflow:hidden}.p-6{padding:1.5rem}.py-4{padding-top:1rem;padding-bottom:1rem}.px-6{padding-left:1.5rem;padding-right:1.5rem}.pt-8{padding-top:2rem}.fixed{position:fixed}.relative{position:relative}.top-0{top:0}.right-0{right:0}.shadow{box-shadow:0 1px 3px 0 rgba(0,0,0,.1),0 1px 2px 0 rgba(0,0,0,.06)}.text-center{text-align:center}.text-gray-200{--text-opacity:1;color:#edf2f7;color:rgba(237,242,247,var(--text-opacity))}.text-gray-300{--text-opacity:1;color:#e2e8f0;color:rgba(226,232,240,var(--text-opacity))}.text-gray-400{--text-opacity:1;color:#cbd5e0;color:rgba(203,213,224,var(--text-opacity))}.text-gray-500{--text-opacity:1;color:#a0aec0;color:rgba(160,174,192,var(--text-opacity))}.text-gray-600{--text-opacity:1;color:#718096;color:rgba(113,128,150,var(--text-opacity))}.text-gray-700{--text-opacity:1;color:#4a5568;color:rgba(74,85,104,var(--text-opacity))}.text-gray-900{--text-opacity:1;color:#1a202c;color:rgba(26,32,44,var(--text-opacity))}.underline{text-decoration:underline}.antialiased{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.w-5{width:1.25rem}.w-8{width:2rem}.w-auto{width:auto}.grid-cols-1{grid-template-columns:repeat(1,minmax(0,1fr))}@media (min-width:640px){.sm\:rounded-lg{border-radius:.5rem}.sm\:block{display:block}.sm\:items-center{align-items:center}.sm\:justify-start{justify-content:flex-start}.sm\:justify-between{justify-content:space-between}.sm\:h-20{height:5rem}.sm\:ml-0{margin-left:0}.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:pt-0{padding-top:0}.sm\:text-left{text-align:left}.sm\:text-right{text-align:right}}@media (min-width:768px){.md\:border-t-0{border-top-width:0}.md\:border-l{border-left-width:1px}.md\:grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}}@media (min-width:1024px){.lg\:px-8{padding-left:2rem;padding-right:2rem}}@media (prefers-color-scheme:dark){.dark\:bg-gray-800{--bg-opacity:1;background-color:#2d3748;background-color:rgba(45,55,72,var(--bg-opacity))}.dark\:bg-gray-900{--bg-opacity:1;background-color:#1a202c;background-color:rgba(26,32,44,var(--bg-opacity))}.dark\:border-gray-700{--border-opacity:1;border-color:#4a5568;border-color:rgba(74,85,104,var(--border-opacity))}.dark\:text-white{--text-opacity:1;color:#fff;color:rgba(255,255,255,var(--text-opacity))}.dark\:text-gray-400{--text-opacity:1;color:#cbd5e0;color:rgba(203,213,224,var(--text-opacity))}.dark\:text-gray-500{--tw-text-opacity:1;color:#6b7280;color:rgba(107,114,128,var(--tw-text-opacity))}}
-        </style>
-
-        <style>
-            body {
-                font-family: 'Nunito', sans-serif;
-            }
-        </style>
-    </head>
-    <body class="antialiased">
-        <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
-            @if (Route::has('login'))
-                <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
-                    @auth
-                        <a href="{{ url('/home') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Home</a>
-                    @else
-                        <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
-
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a>
-                        @endif
-                    @endauth
+            <!-- page header -->
+            <header class="page-header main-page sticky">
+                <div class="sticky-wrapp">
+                    <div class="sticky-container">
+                        <!-- logo -->
+                        <section id="logo" class="logo">
+                            <div>
+                                <a href="index.html"><img src="/images/frontend/blue/logo.png" alt="Clinico"></a>
+                            </div>
+                        </section>
+                        <!--/ logo -->
+                        
+                        <!-- main nav -->
+                        <nav class="main-nav">
+                            <ul>
+                                <li>
+                                    <a href="index.html" class="active"><i class="fa fa-plus"></i>Home</a>
+                                    <ul>
+                                        <li>
+                                            <a href="index.html" class="active">Medical Style</a>
+                                            <ul>
+                                                <li class="text">
+                                                    <h2>Main Campus</h2>
+                                                    <hr>
+                                                    123 Fashion Avenue<br>New York, MO 265984
+                                                    <hr>
+                                                    203-284-2818<br>clinico@domain.com
+                                                    <a href="#" class="more"><i class="fa fa-angle-double-right"></i></a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="home-news.html">News Style</a></li>
+                                        <li><a href="wellness-home.html">Wellness Style</a></li>
+                                        <li><a href="home-one-page.html">Home Alternative</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="services.html"><i class="fa fa-plus"></i>Services</a>
+                                </li>
+                                <li>
+                                    <a href="timetable-week.html"><i class="fa fa-plus"></i>Timetable</a>
+                                    <ul>
+                                        <li><a href="timetable-month.html">Month View</a></li>
+                                        <li><a href="timetable-week.html">Week View</a></li>
+                                        <li><a href="timetable-list.html">List View</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="news-default.html"><i class="fa fa-plus"></i>News</a>
+                                    <ul>
+                                        <li><a href="news-four-columns.html">Four columns</a></li>
+                                        <li><a href="news-three-columns.html">Three columns</a></li>
+                                        <li><a href="news-two-columns.html">Two columns</a></li>
+                                        <li><a href="news-full-width.html">Full width</a></li>
+                                        <li><a href="news-blog-post.html">Blog post</a></li>
+                                    </ul>
+                                </li>
+                                <li class="right">
+                                    <a href="index.html"><i class="fa fa-plus"></i>Features</a>
+                                    <ul>
+                                        <li><a href="widgets.html">Various widgets</a></li>
+                                        <li>
+                                            <a href="#">Huge number of pages</a>
+                                            <ul>
+                                                <li><a href="about-us.html">About Us</a></li>
+                                                <li><a href="locations.html">Locations</a></li>
+                                                <li><a href="doctors.html">Our Doctors</a></li>
+                                                <li><a href="full-width-page.html">Full-Width Page</a></li>
+                                                <li><a href="page-with-sidebar.html">Page with Sidebar</a></li>
+                                                <li><a href="page-with-double-sidebar.html">Double Sidebars Page</a></li>
+                                                <li><a href="page-404.html">404 Page</a></li>
+                                                <li><a href="page-pricing-table.html">Pricing tables</a></li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <a href="feature-unlimited-color.html">Unlimited Color Variations</a>
+                                        </li>
+                                        <li><a href="responsive_and_retina_ready.html">Retina Ready & Responsive</a></li>
+                                        <li><a href="features-accordion.html">Styled Content Items</a></li>
+                                    </ul>
+                                </li>
+                                <li class="right">
+                                    <a href="photo-gallery.html"><i class="fa fa-plus"></i>Photo Tour</a>
+                                    <ul>
+                                        <li>
+                                            <a href="photo-four-filter.html">Four columns</a>
+                                            <ul>
+                                                <li><a href="photo-four-filter.html">With filter</a></li>
+                                                <li><a href="photo-four.html">Without filter</a></li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <a href="photo-three-filter.html">Three columns</a>
+                                            <ul>
+                                                <li><a href="photo-three-filter.html">With filter</a></li>
+                                                <li><a href="photo-three.html">Without filter</a></li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <a href="photo-two-filter.html">Two columns</a>
+                                            <ul>
+                                                <li><a href="photo-two-filter.html">With filter</a></li>
+                                                <li><a href="photo-two.html">Without filter</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="photo-one.html">One column</a></li>
+                                        <li><a href="photo-single.html">Single item</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="contacts.html"><i class="fa fa-plus"></i>Contacts</a>
+                                </li>
+                            </ul>
+                        </nav>
+                        <!--/ main nav -->
+                        
+                        <!-- mobile nav -->
+                        <nav id="mobile-main-nav" class="mobile-main-nav">
+                            <i class="fa fa-bars"></i><a href="#" class="opener">Navigation</a>
+                            <ul>
+                                <li>
+                                    <i></i><a href="index.html" class="active">Home</a>
+                                    <ul>
+                                        <li>
+                                            <i></i><a href="index.html">Medical Style</a>
+                                            <ul>
+                                                <li class="text">
+                                                    <h2>Main Campus</h2>
+                                                    <hr>
+                                                    <p>123 Fashion Avenue<br>New York, MO 265984</p>
+                                                    <hr>
+                                                    <p>203-284-2818<br>clinico@domain.com</p>
+                                                    <a href="#" class="more fa fa-angle-double-right"></a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="home-news.html">News Style</a></li>
+                                        <li><a href="wellness-home.html">Wellness Style</a></li>
+                                        <li><a href="home-one-page.html">Home Alternative</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="services.html">Servives</a>
+                                </li>
+                                <li>
+                                    <i></i><a href="timetable-week.html">Timetable</a>
+                                    <ul>
+                                        <li><a href="timetable-month.html">Month View</a></li>
+                                        <li><a href="timetable-week.html">Week View</a></li>
+                                        <li><a href="timetable-list.html">List View</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <i></i><a href="news-default.html">News</a>
+                                    <ul>
+                                        <li><a href="news-four-columns.html">Four columns</a></li>
+                                        <li><a href="news-three-columns.html">Three columns</a></li>
+                                        <li><a href="news-two-columns.html">Two columns</a></li>
+                                        <li><a href="news-full-width.html">Full width</a></li>
+                                        <li><a href="news-blog-post.html">Blog post</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <i></i><a href="index.html">Features</a>
+                                    <ul>
+                                        <li><a href="widgets.html">Various widgets</a></li>
+                                        <li>
+                                            <i></i><a href="#">Huge number of pages</a>
+                                            <ul>
+                                                <li><a href="about-us.html">About Us</a></li>
+                                                <li><a href="locations.html">Locations</a></li>
+                                                <li><a href="doctors.html">Our Doctors</a></li>
+                                                <li><a href="full-width-page.html">Full-Width Page</a></li>
+                                                <li><a href="page-with-sidebar.html">Page with Sidebar</a></li>
+                                                <li><a href="page-with-double-sidebar.html">Double Sidebars Page</a></li>
+                                                <li><a href="page-404.html">404 Page</a></li>
+                                                <li><a href="page-pricing-table.html">Pricing tables</a></li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <a href="feature-unlimited-color.html">Unlimited Color Variations</a>
+                                        </li>
+                                        <li><a href="responsive_and_retina_ready.html">Retina Ready & Responsive</a></li>
+                                        <li><a href="features-accordion.html">Styled Content Items</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <i></i><a href="photo-gallery.html">Photo Tour</a>
+                                    <ul>
+                                        <li>
+                                            <i></i><a href="photo-four-filter.html">Four columns</a>
+                                            <ul>
+                                                <li><a href="photo-four-filter.html">With filter</a></li>
+                                                <li><a href="photo-four.html">Without filter</a></li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <i></i><a href="photo-three-filter.html">Three columns</a>
+                                            <ul>
+                                                <li><a href="photo-three-filter.html">With filter</a></li>
+                                                <li><a href="photo-three.html">Without filter</a></li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <i></i><a href="photo-two-filter.html">Two columns</a>
+                                            <ul>
+                                                <li><a href="photo-two-filter.html">With filter</a></li>
+                                                <li><a href="photo-two.html">Without filter</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="photo-one.html">One column</a></li>
+                                        <li><a href="photo-single.html">Single item</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="contacts.html">Contacts</a>
+                                </li>
+                            </ul>
+                        </nav>
+                        <!--/ mobile nav -->
+                    </div>
                 </div>
-            @endif
+            </header>
+            <!--/ page header -->
+            
+            <!-- quick search -->
+            <form id="quick-search" class="quick-search">
+                <fieldset>
+                    <legend>Quick Search:</legend>
+                    
+                    <input type="text" placeholder="Search by name" id="docname" name="docname" class="ui-autocomplete-input" autocomplete="off">
+                    
+                    <select>
+                        <option value="0">Speciality</option>
+                        <option value="1">Ophthomologist</option>
+                        <option value="2">Dermatologist</option>
+                        <option value="3">Neorologist</option>
+                        <option value="4">Surgeon</option>
+                    </select>
+                    
+                    <select>
+                        <option value="0">Locations</option>
+                        <option value="1">Primary Health Care</option>
+                        <option value="2">Gynaecological Clinic</option>
+                        <option value="3">Diagnosis With Precise</option>
+                        <option value="4">Cardiac Clinic</option>
+                        <option value="5">General Surgery</option>
+                    </select>
+                    
+                    <button type="submit">Search</button>
+                    <div class="switcher">
+                        <button id="quick-search-switcher" type="button">Find a doctor</button>
+                    </div>
+                </fieldset>             
+            </form>
+            <!--/ quick search -->
 
-            <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
-                <div class="flex justify-center pt-8 sm:justify-start sm:pt-0">
-                    <svg viewBox="0 0 651 192" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-16 w-auto text-gray-700 sm:h-20">
-                        <g clip-path="url(#clip0)" fill="#EF3B2D">
-                            <path d="M248.032 44.676h-16.466v100.23h47.394v-14.748h-30.928V44.676zM337.091 87.202c-2.101-3.341-5.083-5.965-8.949-7.875-3.865-1.909-7.756-2.864-11.669-2.864-5.062 0-9.69.931-13.89 2.792-4.201 1.861-7.804 4.417-10.811 7.661-3.007 3.246-5.347 6.993-7.016 11.239-1.672 4.249-2.506 8.713-2.506 13.389 0 4.774.834 9.26 2.506 13.459 1.669 4.202 4.009 7.925 7.016 11.169 3.007 3.246 6.609 5.799 10.811 7.66 4.199 1.861 8.828 2.792 13.89 2.792 3.913 0 7.804-.955 11.669-2.863 3.866-1.908 6.849-4.533 8.949-7.875v9.021h15.607V78.182h-15.607v9.02zm-1.431 32.503c-.955 2.578-2.291 4.821-4.009 6.73-1.719 1.91-3.795 3.437-6.229 4.582-2.435 1.146-5.133 1.718-8.091 1.718-2.96 0-5.633-.572-8.019-1.718-2.387-1.146-4.438-2.672-6.156-4.582-1.719-1.909-3.032-4.152-3.938-6.73-.909-2.577-1.36-5.298-1.36-8.161 0-2.864.451-5.585 1.36-8.162.905-2.577 2.219-4.819 3.938-6.729 1.718-1.908 3.77-3.437 6.156-4.582 2.386-1.146 5.059-1.718 8.019-1.718 2.958 0 5.656.572 8.091 1.718 2.434 1.146 4.51 2.674 6.229 4.582 1.718 1.91 3.054 4.152 4.009 6.729.953 2.577 1.432 5.298 1.432 8.162-.001 2.863-.479 5.584-1.432 8.161zM463.954 87.202c-2.101-3.341-5.083-5.965-8.949-7.875-3.865-1.909-7.756-2.864-11.669-2.864-5.062 0-9.69.931-13.89 2.792-4.201 1.861-7.804 4.417-10.811 7.661-3.007 3.246-5.347 6.993-7.016 11.239-1.672 4.249-2.506 8.713-2.506 13.389 0 4.774.834 9.26 2.506 13.459 1.669 4.202 4.009 7.925 7.016 11.169 3.007 3.246 6.609 5.799 10.811 7.66 4.199 1.861 8.828 2.792 13.89 2.792 3.913 0 7.804-.955 11.669-2.863 3.866-1.908 6.849-4.533 8.949-7.875v9.021h15.607V78.182h-15.607v9.02zm-1.432 32.503c-.955 2.578-2.291 4.821-4.009 6.73-1.719 1.91-3.795 3.437-6.229 4.582-2.435 1.146-5.133 1.718-8.091 1.718-2.96 0-5.633-.572-8.019-1.718-2.387-1.146-4.438-2.672-6.156-4.582-1.719-1.909-3.032-4.152-3.938-6.73-.909-2.577-1.36-5.298-1.36-8.161 0-2.864.451-5.585 1.36-8.162.905-2.577 2.219-4.819 3.938-6.729 1.718-1.908 3.77-3.437 6.156-4.582 2.386-1.146 5.059-1.718 8.019-1.718 2.958 0 5.656.572 8.091 1.718 2.434 1.146 4.51 2.674 6.229 4.582 1.718 1.91 3.054 4.152 4.009 6.729.953 2.577 1.432 5.298 1.432 8.162 0 2.863-.479 5.584-1.432 8.161zM650.772 44.676h-15.606v100.23h15.606V44.676zM365.013 144.906h15.607V93.538h26.776V78.182h-42.383v66.724zM542.133 78.182l-19.616 51.096-19.616-51.096h-15.808l25.617 66.724h19.614l25.617-66.724h-15.808zM591.98 76.466c-19.112 0-34.239 15.706-34.239 35.079 0 21.416 14.641 35.079 36.239 35.079 12.088 0 19.806-4.622 29.234-14.688l-10.544-8.158c-.006.008-7.958 10.449-19.832 10.449-13.802 0-19.612-11.127-19.612-16.884h51.777c2.72-22.043-11.772-40.877-33.023-40.877zm-18.713 29.28c.12-1.284 1.917-16.884 18.589-16.884 16.671 0 18.697 15.598 18.813 16.884h-37.402zM184.068 43.892c-.024-.088-.073-.165-.104-.25-.058-.157-.108-.316-.191-.46-.056-.097-.137-.176-.203-.265-.087-.117-.161-.242-.265-.345-.085-.086-.194-.148-.29-.223-.109-.085-.206-.182-.327-.252l-.002-.001-.002-.002-35.648-20.524a2.971 2.971 0 00-2.964 0l-35.647 20.522-.002.002-.002.001c-.121.07-.219.167-.327.252-.096.075-.205.138-.29.223-.103.103-.178.228-.265.345-.066.089-.147.169-.203.265-.083.144-.133.304-.191.46-.031.085-.08.162-.104.25-.067.249-.103.51-.103.776v38.979l-29.706 17.103V24.493a3 3 0 00-.103-.776c-.024-.088-.073-.165-.104-.25-.058-.157-.108-.316-.191-.46-.056-.097-.137-.176-.203-.265-.087-.117-.161-.242-.265-.345-.085-.086-.194-.148-.29-.223-.109-.085-.206-.182-.327-.252l-.002-.001-.002-.002L40.098 1.396a2.971 2.971 0 00-2.964 0L1.487 21.919l-.002.002-.002.001c-.121.07-.219.167-.327.252-.096.075-.205.138-.29.223-.103.103-.178.228-.265.345-.066.089-.147.169-.203.265-.083.144-.133.304-.191.46-.031.085-.08.162-.104.25-.067.249-.103.51-.103.776v122.09c0 1.063.568 2.044 1.489 2.575l71.293 41.045c.156.089.324.143.49.202.078.028.15.074.23.095a2.98 2.98 0 001.524 0c.069-.018.132-.059.2-.083.176-.061.354-.119.519-.214l71.293-41.045a2.971 2.971 0 001.489-2.575v-38.979l34.158-19.666a2.971 2.971 0 001.489-2.575V44.666a3.075 3.075 0 00-.106-.774zM74.255 143.167l-29.648-16.779 31.136-17.926.001-.001 34.164-19.669 29.674 17.084-21.772 12.428-43.555 24.863zm68.329-76.259v33.841l-12.475-7.182-17.231-9.92V49.806l12.475 7.182 17.231 9.92zm2.97-39.335l29.693 17.095-29.693 17.095-29.693-17.095 29.693-17.095zM54.06 114.089l-12.475 7.182V46.733l17.231-9.92 12.475-7.182v74.537l-17.231 9.921zM38.614 7.398l29.693 17.095-29.693 17.095L8.921 24.493 38.614 7.398zM5.938 29.632l12.475 7.182 17.231 9.92v79.676l.001.005-.001.006c0 .114.032.221.045.333.017.146.021.294.059.434l.002.007c.032.117.094.222.14.334.051.124.088.255.156.371a.036.036 0 00.004.009c.061.105.149.191.222.288.081.105.149.22.244.314l.008.01c.084.083.19.142.284.215.106.083.202.178.32.247l.013.005.011.008 34.139 19.321v34.175L5.939 144.867V29.632h-.001zm136.646 115.235l-65.352 37.625V148.31l48.399-27.628 16.953-9.677v33.862zm35.646-61.22l-29.706 17.102V66.908l17.231-9.92 12.475-7.182v33.841z"/>
-                        </g>
-                    </svg>
-                </div>
-
-                <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
-                    <div class="grid grid-cols-1 md:grid-cols-2">
-                        <div class="p-6">
-                            <div class="flex items-center">
-                                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-8 h-8 text-gray-500"><path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
-                                <div class="ml-4 text-lg leading-7 font-semibold"><a href="https://laravel.com/docs" class="underline text-gray-900 dark:text-white">Documentation</a></div>
-                            </div>
-
-                            <div class="ml-12">
-                                <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                                    Laravel has wonderful, thorough documentation covering every aspect of the framework. Whether you are new to the framework or have previous experience with Laravel, we recommend reading all of the documentation from beginning to end.
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-t-0 md:border-l">
-                            <div class="flex items-center">
-                                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-8 h-8 text-gray-500"><path d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path><path d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-                                <div class="ml-4 text-lg leading-7 font-semibold"><a href="https://laracasts.com" class="underline text-gray-900 dark:text-white">Laracasts</a></div>
-                            </div>
-
-                            <div class="ml-12">
-                                <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                                    Laracasts offers thousands of video tutorials on Laravel, PHP, and JavaScript development. Check them out, see for yourself, and massively level up your development skills in the process.
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="p-6 border-t border-gray-200 dark:border-gray-700">
-                            <div class="flex items-center">
-                                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-8 h-8 text-gray-500"><path d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"></path></svg>
-                                <div class="ml-4 text-lg leading-7 font-semibold"><a href="https://laravel-news.com/" class="underline text-gray-900 dark:text-white">Laravel News</a></div>
-                            </div>
-
-                            <div class="ml-12">
-                                <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                                    Laravel News is a community driven portal and newsletter aggregating all of the latest and most important news in the Laravel ecosystem, including new package releases and tutorials.
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-l">
-                            <div class="flex items-center">
-                                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-8 h-8 text-gray-500"><path d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                                <div class="ml-4 text-lg leading-7 font-semibold text-gray-900 dark:text-white">Vibrant Ecosystem</div>
-                            </div>
-
-                            <div class="ml-12">
-                                <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                                    Laravel's robust library of first-party tools and libraries, such as <a href="https://forge.laravel.com" class="underline">Forge</a>, <a href="https://vapor.laravel.com" class="underline">Vapor</a>, <a href="https://nova.laravel.com" class="underline">Nova</a>, and <a href="https://envoyer.io" class="underline">Envoyer</a> help you take your projects to the next level. Pair them with powerful open source libraries like <a href="https://laravel.com/docs/billing" class="underline">Cashier</a>, <a href="https://laravel.com/docs/dusk" class="underline">Dusk</a>, <a href="https://laravel.com/docs/broadcasting" class="underline">Echo</a>, <a href="https://laravel.com/docs/horizon" class="underline">Horizon</a>, <a href="https://laravel.com/docs/sanctum" class="underline">Sanctum</a>, <a href="https://laravel.com/docs/telescope" class="underline">Telescope</a>, and more.
-                                </div>
+            <!-- slider -->
+            <div class="slider-wrapper">
+                <section class="slider" id="slider">
+                    <div class="ls-slide" data-ls="transition2d:9;slidedelay:7000;">                    
+                        <img src="pic/medical-slide-1.jpg" alt="" class="ls-bg">
+                        
+                        <div class="intro ls-l" data-ls="offsetyin:top;offsetxin:0;durationin:2000;offsetyout:bottom;offsetxout:0;durationout:1000;" style="left:80%;top:35%;">
+                            <span class="icon fa fa-heart"></span>
+                            <h2><span>SYMPTOM</span>CHECKER</h2>
+                            <p>Vestibulum rutrum luctus porta. Maecenas elit nibh</p>
+                            <div class="buttons">
+                                <a href="#" class="prev"><i class="fa fa-angle-left"></i></a><!--
+                                --><a href="#" class="button">Read More</a><!--
+                                --><a href="#" class="next"><i class="fa fa-angle-right"></i></a>
                             </div>
                         </div>
                     </div>
-                </div>
-
-                <div class="flex justify-center mt-4 sm:items-center sm:justify-between">
-                    <div class="text-center text-sm text-gray-500 sm:text-left">
-                        <div class="flex items-center">
-                            <svg fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor" class="-mt-px w-5 h-5 text-gray-400">
-                                <path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
-                            </svg>
-
-                            <a href="https://laravel.bigcartel.com" class="ml-1 underline">
-                                Shop
-                            </a>
-
-                            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="ml-4 -mt-px w-5 h-5 text-gray-400">
-                                <path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
-                            </svg>
-
-                            <a href="https://github.com/sponsors/taylorotwell" class="ml-1 underline">
-                                Sponsor
-                            </a>
+                    <div class="ls-slide" data-ls="transition2d:40;slidedelay:7000;">               
+                        <img src="pic/medical-slide-2.jpg" alt="" class="ls-bg">
+                        
+                        <div class="intro ls-l" data-ls="scalexin:0.3;scaleyin:0.3;rotatexin:180;offsetxin:0;durationin:2000;durationout:2000;scalexout:2;scaleyout:2;offsetxout:0;fadeout:true;showuntil:3000;" style="left:80%;top:35%;">
+                            <span class="icon fa fa-comments"></span>
+                            <h2><span>HELP</span>ONLINE</h2>
+                            <p>Vestibulum rutrum luctus porta. Maecenas elit nibh</p>
+                            <div class="buttons">
+                                <a href="#" class="prev"><i class="fa fa-angle-left"></i></a><!--
+                                --><a href="#" class="button">Read More</a><!--
+                                --><a href="#" class="next"><i class="fa fa-angle-right"></i></a>
+                            </div>
                         </div>
                     </div>
-
-                    <div class="ml-4 text-center text-sm text-gray-500 sm:text-right sm:ml-0">
-                        Laravel v{{ Illuminate\Foundation\Application::VERSION }} (PHP v{{ PHP_VERSION }})
+                    <div class="ls-slide" data-ls="transition2d:11;slidedelay:7000;">
+                        <img src="pic/medical-slide-3.jpg" alt="" class="ls-bg">
+                        
+                        <div class="intro ls-l" data-ls="skewxin:30;skewyin:0;offsetxin:right;fadein:false;durationin:2000;durationout:1000;offsetxout:right;offsetyout:0;fadeout:true;" style="left:80%;top:35%;">
+                            <span class="icon fa fa-flask"></span>
+                            <h2><span>LAB</span>TESTING</h2>
+                            <p>Vestibulum rutrum luctus porta. Maecenas elit nibh</p>
+                            <div class="buttons">
+                                <a href="#" class="prev"><i class="fa fa-angle-left"></i></a><!--
+                                --><a href="#" class="button">Read More</a><!--
+                                --><a href="#" class="next"><i class="fa fa-angle-right"></i></a>
+                            </div>
+                        </div>
                     </div>
-                </div>
+                </section>
             </div>
+            <!--/ slider -->
+            
+            <!-- page content -->
+            <main class="page-content">
+                <div class="grid-row">
+                    <!-- benefits -->
+                    <section class="benefits">
+                        <ul>
+                            <li>
+                                <div class="pic"><i class="fa fa-heart"></i></div>
+                                <div class="text">
+                                    <h2>Heart Rate</h2>
+                                    <p>Aliquam ut lorem scelerisque, consequat mi quis, scelerisque massa.</p>
+                                    <a href="#" class="more"></a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="pic"><i class="fa fa-flask"></i></div>
+                                <div class="text">
+                                    <h2>Lab Test</h2>
+                                    <p>Cum sociis natoque penatibus et magnis dis parturient liquam montes liquam montes.</p>
+                                    <a href="#" class="more"></a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="pic"><i class="fa fa-stethoscope"></i></div>
+                                <div class="text">
+                                    <h2>Symptom Check</h2>
+                                    <p>Suspendisse mattis tristique libero at placerat. Nullam diam risus.</p>
+                                    <a href="#" class="more"></a>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="pic"><i class="fa fa-comments-o"></i></div>
+                                <div class="text">
+                                    <h2>Online Help</h2>
+                                    <p>Pellentesque quam metus, venenatis quis eleifend sit amet porttitor.</p>
+                                    <a href="#" class="more"></a>
+                                </div>
+                            </li>
+                        </ul>
+                    </section>
+                    <!--/ benefits -->
+                </div>
+                
+                <div class="grid-row">
+                    <!-- services -->
+                    <section class="services">
+                        <ul>
+                            <li>
+                                <a class="pic"><i class="fa fa-leaf"></i></a>
+                                <h2><a href="#">Transplant Services</a></h2>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sollicitudin justo non odio molestie, sed venenatis elit laoreet. Cras pharetra dolor vitae malesuada facilisis.</p>
+                                <a href="#" class="more fa fa-long-arrow-right"></a>
+                            </li>
+                            <li>
+                                <a class="pic"><i class="fa fa-user-md"></i></a>
+                                <div class="text">
+                                    <h2><a href="#">Qualified Doctors</a></h2>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sollicitudin justo non odio molestie, sed venenatis elit laoreet. Cras pharetra dolor vitae malesuada facilisis.</p>
+                                    <a href="#" class="more fa fa-long-arrow-right"></a>
+                                </div>
+                            </li>
+                            <li>
+                                <a class="pic"><i class="fa fa-clock-o"></i></a>
+                                <h2><a href="#">24 Hours Service</a></h2>
+                                <p>Mauris consectetur, dui eget ullamcorper hendrerit, eros ligula consectetur dui, vitae adipiscing nunc enim eu justo. Donec quis mollis neque. Pellentesque facilisis.</p>
+                                <a href="#" class="more fa fa-long-arrow-right"></a>
+                            </li>
+                            <li>
+                                <a class="pic"><i class="fa fa-ambulance"></i></a>
+                                <div class="text">
+                                    <h2><a href="#">Emergency Departments</a></h2>
+                                    <p>Fusce pellentesque lectus quis placerat ultrices. Nunc malesuada est vitae urna laoreet porta. Donec cursus tellus libero, non porttitor felis luctus ut.</p>
+                                    <a href="#" class="more fa fa-long-arrow-right"></a>
+                                </div>
+                            </li>
+                        </ul>
+                    </section>
+                    <!--/ services -->  
+                </div>
+                
+                <div class="grid-row">
+                    <!-- doctors carousel -->
+                    <section class="widget doctors-carousel doctors">
+                        <div class="widget-title">Our Doctors</div>
+                        <div id="doctors-carousel" class="owl-carousel">
+                            <div class="item">
+                                <div class="pic">
+                                    <img src="pic/doctor-1.jpg" width="270" height="270" alt="Dr. Butcher House">
+                                    <div class="links">
+                                        <ul>
+                                            <li><a href="#" class="fa fa-skype"></a></li>
+                                            <li><a href="#" class="fa fa-twitter"></a></li>
+                                            <li><a href="#" class="fa fa-facebook"></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <h3><a href="staff-page.html">Dr. Butcher House</a></h3>
+                                <p>Ophthomologist</p>
+                            </div>
+                            <div class="item">
+                                <div class="pic">
+                                    <img src="pic/doctor-2.jpg" width="270" height="270" alt="Dr. Brick Wall">
+                                    <div class="links">
+                                        <ul>
+                                            <li><a href="#" class="fa fa-skype"></a></li>
+                                            <li><a href="#" class="fa fa-twitter"></a></li>
+                                            <li><a href="#" class="fa fa-facebook"></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <h3><a href="staff-page.html">Dr. Brick Wall</a></h3>
+                                <p>Dermatologist</p>
+                            </div>
+                            <div class="item">
+                                <div class="pic">
+                                    <img src="pic/doctor-3.jpg" width="270" height="270" alt="Dr. Sno White">
+                                    <div class="links">
+                                        <ul>
+                                            <li><a href="#" class="fa fa-skype"></a></li>
+                                            <li><a href="#" class="fa fa-twitter"></a></li>
+                                            <li><a href="#" class="fa fa-facebook"></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <h3><a href="staff-page.html">Dr. Sno White</a></h3>
+                                <p>Neorologist</p>
+                            </div>
+                            <div class="item">
+                                <div class="pic">
+                                    <img src="pic/doctor-4.jpg" width="270" height="270" alt="Dr. Mangle Taleebin">
+                                    <div class="links">
+                                        <ul>
+                                            <li><a href="#" class="fa fa-skype"></a></li>
+                                            <li><a href="#" class="fa fa-twitter"></a></li>
+                                            <li><a href="#" class="fa fa-facebook"></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <h3><a href="staff-page.html">Dr. Mangle Taleebin</a></h3>
+                                <p>Surgeon</p>
+                            </div>
+                            <div class="item">
+                                <div class="pic">
+                                    <img src="pic/doctor-2.jpg" width="270" height="270" alt="Dr. Brick Wall">
+                                    <div class="links">
+                                        <ul>
+                                            <li><a href="#" class="fa fa-skype"></a></li>
+                                            <li><a href="#" class="fa fa-twitter"></a></li>
+                                            <li><a href="#" class="fa fa-facebook"></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <h3><a href="staff-page.html">Dr. Brick Wall</a></h3>
+                                <p>Dermatologist</p>
+                            </div>
+                            <div class="item">
+                                <div class="pic">
+                                    <img src="pic/doctor-4.jpg" width="270" height="270" alt="Dr. Mangle Taleebin">
+                                    <div class="links">
+                                        <ul>
+                                            <li><a href="#" class="fa fa-skype"></a></li>
+                                            <li><a href="#" class="fa fa-twitter"></a></li>
+                                            <li><a href="#" class="fa fa-facebook"></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <h3><a href="staff-page.html">Dr. Mangle Taleebin</a></h3>
+                                <p>Surgeon</p>
+                            </div>
+                            <div class="item">
+                                <div class="pic">
+                                    <img src="pic/doctor-3.jpg" width="270" height="270" alt="Dr. Sno White">
+                                    <div class="links">
+                                        <ul>
+                                            <li><a href="#" class="fa fa-skype"></a></li>
+                                            <li><a href="#" class="fa fa-twitter"></a></li>
+                                            <li><a href="#" class="fa fa-facebook"></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <h3><a href="staff-page.html">Dr. Sno White</a></h3>
+                                <p>Neorologist</p>
+                            </div>
+                            <div class="item">
+                                <div class="pic">
+                                    <img src="pic/doctor-1.jpg" width="270" height="270" alt="Dr. Butcher House">
+                                    <div class="links">
+                                        <ul>
+                                            <li><a href="#" class="fa fa-skype"></a></li>
+                                            <li><a href="#" class="fa fa-twitter"></a></li>
+                                            <li><a href="#" class="fa fa-facebook"></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <h3><a href="staff-page.html">Dr. Butcher House</a></h3>
+                                <p>Ophthomologist</p>
+                            </div>
+                        </div>
+                    </section>
+                    <!--/ doctors carousel -->
+                </div>
+                
+                <div class="grid-row">
+                    <div class="grid-col grid-col-4">
+                        <!-- departments -->
+                        <section class="widget widget-departments">
+                            <div class="widget-title">Departments</div>
+                            <dl>
+                                <dt><i class="fa fa-medkit"></i>Primary Health Care</dt>
+                                <dd>Sed purus purus, tincidunt eget malesuada et, molestie ut eros. Fusce blandit, sapien eu sollicitudin consectetur, ligula tellus.<br/><a href="timetable-week.html"><i class="soc-icon fa fa-clock-o"></i> TIMETABLE</a></dd>
+                                <dt><i class="fa fa-user-md"></i>Gynaecological Clinic</dt>
+                                <dd>Donec lacinia suscipit magna, et pulvinar tortor facilisis quis. Donec tempor erat vel scelerisque posuere.<br/><a href="timetable-week.html"><i class="soc-icon fa fa-clock-o"></i> TIMETABLE</a></dd>
+                                <dt><i class="fa fa-stethoscope"></i>Diagnosis With Precise</dt>
+                                <dd>Nam elementum elit eget  tellus faucibus euismod. Aliquam turpis nibh, dictum eu consequat ac, facilisis eu elit. Pellentesque pellentesque orci quam, nec tempus nibh congue ut.<br/><a href="timetable-week.html"><i class="soc-icon fa fa-clock-o"></i> TIMETABLE</a></dd>
+                                <dt><i class="fa fa-heart"></i>Cardiac Clinic</dt>
+                                <dd>Nulla nec rutrum tortor, in fermentum nisl.accumsan pulvinar scelerisque tincidunt, adipiscing eget risus.<br/><a href="timetable-week.html"><i class="soc-icon fa fa-clock-o"></i> TIMETABLE</a></dd>
+                                <dt><i class="fa fa-scissors"></i>General Surgery</dt>
+                                <dd>Sed purus purus, tincidunt eget malesuada et, molestie ut eros. Fusce blandit, sapien eu sollicitudin consectetur, ligula tellus pulvinar. Urna, quis facilisis magna dolor ac lacus.<br/><a href="timetable-week.html"><i class="soc-icon fa fa-clock-o"></i> TIMETABLE</a></dd>
+                                <dt class="opened"><i class="fa fa-wheelchair"></i>Rehabilitation Studio</dt>
+                                <dd>Sed purus purus, tincidunt eget malesuada et, molestie ut eros. Fusce blandit, sapien eu sollicitudin consectetur, ligula tellus pulvinar. Urna, quis facilisis magna dolor ac lacus.<br/><a href="timetable-week.html"><i class="soc-icon fa fa-clock-o"></i> TIMETABLE</a></dd>
+                            </dl>
+                        </section>
+                        <!--/ departments -->
+                    </div>
+                    
+                    <div class="grid-col grid-col-4">
+                        <!-- sevices -->
+                        <section class="widget widget-sevices">
+                            <div class="widget-title">Our Medical Services</div>
+                            <ul>
+                                <li><i class="fa fa-bookmark"></i><a href="#"><i class="fa fa-angle-right"></i>Cardiothoracic Surgery</a></li>
+                                <li><i class="fa fa-bookmark"></i><a href="#"><i class="fa fa-angle-right"></i>Cardiovascular Diseases</a></li>
+                                <li><i class="fa fa-bookmark"></i><a href="#"><i class="fa fa-angle-right"></i>Ophthalmology</a></li>
+                                <li><i class="fa fa-bookmark"></i><a href="#"><i class="fa fa-angle-right"></i>Dermatology</a></li>
+                                <li><i class="fa fa-bookmark"></i><a href="#"><i class="fa fa-angle-right"></i>General Surgery</a></li>
+                                <li><i class="fa fa-bookmark"></i><a href="#"><i class="fa fa-angle-right"></i>Consultative & Diagnostic</a></li>
+                            </ul>
+                        </section>
+                        <!--/ sevices -->
+                    </div>
+                    
+                    <div class="grid-col grid-col-4">
+                        <!-- appointment -->
+                        <section class="widget widget-appointment">
+                            <div class="widget-title">Make an Appointment</div>
+                            <form action="php/contact-send.php" id="contactform">
+                                <fieldset>
+                                    <div class="row">
+                                        <input type="text" placeholder="Full Name" name="name">
+                                        <i class="fa fa-user"></i>
+                                    </div>
+                                    <div class="row">
+                                        <input type="tel" placeholder="Phone Number" name="phone">
+                                        <i class="fa fa-phone"></i>
+                                    </div>
+                                    <div class="row">
+                                        <input type="email" placeholder="Email Address" name="email">
+                                        <i class="fa fa-envelope"></i>
+                                    </div>
+                                    <div class="row">
+                                        <input type="text" placeholder="Appointment Date" name="date">
+                                        <i class="fa fa-calendar"></i>
+                                    </div>
+                                    <div class="row">
+                                        <textarea cols="30" rows="5" placeholder="Message" name="message"></textarea>
+                                        <i class="fa fa-align-left"></i>
+                                    </div>
+                                    <div class="clearfix captcha">
+                                        <button type="submit" class="button" value="Submit">Send Message</button>
+                                    </div>
+                                </fieldset>
+                            </form>
+                        </section>
+                        <!--/ appointment -->   
+                    </div>
+                </div>
+            </main>
+            <!--/ page content -->
+
+            <!-- page footer -->
+            <footer class="page-footer">
+                <a href="#" id="top-link" class="top-link"><i class="fa fa-angle-double-up"></i></a>
+                
+                <div class="grid-row">
+                    <div class="grid-col grid-col-3">
+                        <!-- last news -->
+                        <section class="widget-alt last-news">
+                            <div class="widget-icon"></div>
+                            <div class="widget-title">Clinico</div>
+                            <ul>
+                                <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sollicitudin justo non odio molestie, sed venenatis elit, consectetur adipiscing.</li>
+                                <li>Donec quis condimentum leo, et congue dolor. Integer auctor facilisis odio. Duis vitae nibh tristique, consectetur lacus a, facilisis rutrum enim.</li>
+                                <li>Cras fermentum interdum dapibus. Maecenas imperdiet, consectetur adipiscing magna nec odio cursus, vitae consequat ante.</li>
+                            </ul>
+                        </section>
+                        <!--/ last news -->
+                    </div>
+                    
+                    <div class="grid-col grid-col-3">
+                        <!-- location -->
+                        <section class="widget-alt location">
+                            <div class="widget-icon"></div>
+                            <div class="widget-title">Location</div>
+                            <address>Address will be appear here, some details here City Name, Country.</address>
+                            <ul>
+                                <li><i class="fa fa-phone"></i>(907) 555-55555</li>
+                                <li><i class="fa fa-at">@</i>company@youremail.com</li>
+                                <li><i class="fa fa-skype"></i>Medical Skype Name</li>
+                            </ul>
+                            <nav>
+                                <a href="#" class="fa fa-twitter"></a>
+                                <a href="#" class="fa fa-facebook"></a>
+                                <a href="#" class="fa fa-instagram"></a>
+                            </nav>
+                        </section>
+                        <!--/ location -->  
+                    </div>
+                    
+                    <div class="grid-col grid-col-3">
+                        <!-- last news -->
+                        <section class="widget-alt recent-posts">
+                            <div class="widget-icon"></div>
+                            <div class="widget-title">Recent Posts</div>
+                            <ul>
+                                <li>
+                                    <a href="#"><img src="pic/post/1.png" width="80" height="80" alt=""></a>
+                                    <p><a href="#">New study links lutein with eye health benefits, consectetur adipiscing</a><br>5 months ago</p>
+                                </li>
+                                <li>
+                                    <a href="#"><img src="pic/post/2.png" width="80" height="80" alt=""></a>
+                                    <p><a href="#">Pets may reduce risk of heart disease, et congue dolor heart</a><br>8 months ago</p>
+                                </li>
+                                <li>
+                                    <a href="#"><img src="pic/post/3.png" width="80" height="80" alt=""></a>
+                                    <p><a href="#">Discoveries offer a new explanation for diabetes, consectetur</a><br>10 months ago</p>
+                                </li>
+                            </ul>
+                        </section>
+                        <!--/ last news -->                     
+                    </div>
+                    
+                    <div class="grid-col grid-col-3">
+                        <!-- work time -->
+                        <section class="widget-alt work-time">
+                            <div class="widget-icon"></div>
+                            <dl>
+                                <dt>Mon</dt>
+                                <dd>08:00 am - 12:00 pm</dd>
+                                <dt>Tue</dt>
+                                <dd>01:00 am - 05:00 pm</dd>
+                                <dt>Wed</dt>
+                                <dd>Free day</dd>
+                                <dt>Thu</dt>
+                                <dd>08:00 am - 12:00 pm</dd>
+                                <dt>Fri</dt>
+                                <dd>08:00 am - 12:00 pm</dd>
+                                <dt>Sat</dt>
+                                <dd>08:00 am - 12:00 pm</dd>
+                                <dt>Sun</dt>
+                                <dd>Free day</dd>
+                            </dl>
+                            <a href="#" class="button">Make an Appointment</a>
+                        </section>
+                        <!--/ work time -->                         
+                    </div>
+                </div>
+            </footer>
+            <!--/ page footer -->
+            
+            <!-- copyrights -->
+            <div class="copyrights">Copyrights ©2014: Clinico - Responsive Medical and Health Template</div>
+            <!--/ copyrights -->
+
         </div>
-    </body>
-</html>
+        
+@endsection
