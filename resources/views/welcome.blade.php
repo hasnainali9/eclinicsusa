@@ -89,6 +89,7 @@
                                     <a href="#" class="more"></a>
                                 </div>
                             </li>
+
                         </ul>
                     </section>
                     <!--/ benefits -->
@@ -130,81 +131,127 @@
                     </section>
                     <!--/ services -->  
                 </div>
-                
+
+
                 <div class="grid-row">
-                    <div class="grid-col grid-col-4">
-                        <!-- departments -->
-                        <section class="widget widget-departments">
-                            <div class="widget-title">Departments</div>
-                            <dl>
-                                <dt><i class="fa fa-medkit"></i>Primary Health Care</dt>
-                                <dd>Sed purus purus, tincidunt eget malesuada et, molestie ut eros. Fusce blandit, sapien eu sollicitudin consectetur, ligula tellus.<br/><a href="timetable-week.html"><i class="soc-icon fa fa-clock-o"></i> TIMETABLE</a></dd>
-                                <dt><i class="fa fa-user-md"></i>Gynaecological Clinic</dt>
-                                <dd>Donec lacinia suscipit magna, et pulvinar tortor facilisis quis. Donec tempor erat vel scelerisque posuere.<br/><a href="timetable-week.html"><i class="soc-icon fa fa-clock-o"></i> TIMETABLE</a></dd>
-                                <dt><i class="fa fa-stethoscope"></i>Diagnosis With Precise</dt>
-                                <dd>Nam elementum elit eget  tellus faucibus euismod. Aliquam turpis nibh, dictum eu consequat ac, facilisis eu elit. Pellentesque pellentesque orci quam, nec tempus nibh congue ut.<br/><a href="timetable-week.html"><i class="soc-icon fa fa-clock-o"></i> TIMETABLE</a></dd>
-                                <dt><i class="fa fa-heart"></i>Cardiac Clinic</dt>
-                                <dd>Nulla nec rutrum tortor, in fermentum nisl.accumsan pulvinar scelerisque tincidunt, adipiscing eget risus.<br/><a href="timetable-week.html"><i class="soc-icon fa fa-clock-o"></i> TIMETABLE</a></dd>
-                                <dt><i class="fa fa-scissors"></i>General Surgery</dt>
-                                <dd>Sed purus purus, tincidunt eget malesuada et, molestie ut eros. Fusce blandit, sapien eu sollicitudin consectetur, ligula tellus pulvinar. Urna, quis facilisis magna dolor ac lacus.<br/><a href="timetable-week.html"><i class="soc-icon fa fa-clock-o"></i> TIMETABLE</a></dd>
-                                <dt class="opened"><i class="fa fa-wheelchair"></i>Rehabilitation Studio</dt>
-                                <dd>Sed purus purus, tincidunt eget malesuada et, molestie ut eros. Fusce blandit, sapien eu sollicitudin consectetur, ligula tellus pulvinar. Urna, quis facilisis magna dolor ac lacus.<br/><a href="timetable-week.html"><i class="soc-icon fa fa-clock-o"></i> TIMETABLE</a></dd>
-                            </dl>
-                        </section>
-                        <!--/ departments -->
-                    </div>
-                    
-                    <div class="grid-col grid-col-4">
-                        <!-- sevices -->
-                        <section class="widget widget-sevices">
-                            <div class="widget-title">Our Medical Services</div>
-                            <ul>
-                                <li><i class="fa fa-bookmark"></i><a href="#"><i class="fa fa-angle-right"></i>Cardiothoracic Surgery</a></li>
-                                <li><i class="fa fa-bookmark"></i><a href="#"><i class="fa fa-angle-right"></i>Cardiovascular Diseases</a></li>
-                                <li><i class="fa fa-bookmark"></i><a href="#"><i class="fa fa-angle-right"></i>Ophthalmology</a></li>
-                                <li><i class="fa fa-bookmark"></i><a href="#"><i class="fa fa-angle-right"></i>Dermatology</a></li>
-                                <li><i class="fa fa-bookmark"></i><a href="#"><i class="fa fa-angle-right"></i>General Surgery</a></li>
-                                <li><i class="fa fa-bookmark"></i><a href="#"><i class="fa fa-angle-right"></i>Consultative & Diagnostic</a></li>
-                            </ul>
-                        </section>
-                        <!--/ sevices -->
-                    </div>
-                    
-                    <div class="grid-col grid-col-4">
-                        <!-- appointment -->
-                        <section class="widget widget-appointment">
-                            <div class="widget-title">Make an Appointment</div>
-                            <form action="php/contact-send.php" id="contactform">
-                                <fieldset>
-                                    <div class="row">
-                                        <input type="text" placeholder="Full Name" name="name">
-                                        <i class="fa fa-user"></i>
+                    <!-- doctors carousel -->
+                    <section class="widget doctors-carousel doctors">
+                        <div class="widget-title">Our Doctors</div>
+                        <div id="doctors-carousel" class="owl-carousel">
+                            <div class="item">
+                                <div class="pic">
+                                    <img src="pic/doctor-1.jpg" width="270" height="270" alt="Dr. Butcher House">
+                                </div>
+                                <h3><a href="staff-page.html">Dr. Butcher House</a></h3>
+                                <p>Ophthomologist</p>
+                            </div>
+                            <div class="item">
+                                <div class="pic">
+                                    <img src="pic/doctor-2.jpg" width="270" height="270" alt="Dr. Brick Wall">
+                                    <div class="links">
+                                        <ul>
+                                            <li><a href="#" class="fa fa-skype"></a></li>
+                                            <li><a href="#" class="fa fa-twitter"></a></li>
+                                            <li><a href="#" class="fa fa-facebook"></a></li>
+                                        </ul>
                                     </div>
-                                    <div class="row">
-                                        <input type="tel" placeholder="Phone Number" name="phone">
-                                        <i class="fa fa-phone"></i>
+                                </div>
+                                <h3><a href="staff-page.html">Dr. Brick Wall</a></h3>
+                                <p>Dermatologist</p>
+                            </div>
+                            <div class="item">
+                                <div class="pic">
+                                    <img src="pic/doctor-3.jpg" width="270" height="270" alt="Dr. Sno White">
+                                    <div class="links">
+                                        <ul>
+                                            <li><a href="#" class="fa fa-skype"></a></li>
+                                            <li><a href="#" class="fa fa-twitter"></a></li>
+                                            <li><a href="#" class="fa fa-facebook"></a></li>
+                                        </ul>
                                     </div>
-                                    <div class="row">
-                                        <input type="email" placeholder="Email Address" name="email">
-                                        <i class="fa fa-envelope"></i>
+                                </div>
+                                <h3><a href="staff-page.html">Dr. Sno White</a></h3>
+                                <p>Neorologist</p>
+                            </div>
+                            <div class="item">
+                                <div class="pic">
+                                    <img src="pic/doctor-4.jpg" width="270" height="270" alt="Dr. Mangle Taleebin">
+                                    <div class="links">
+                                        <ul>
+                                            <li><a href="#" class="fa fa-skype"></a></li>
+                                            <li><a href="#" class="fa fa-twitter"></a></li>
+                                            <li><a href="#" class="fa fa-facebook"></a></li>
+                                        </ul>
                                     </div>
-                                    <div class="row">
-                                        <input type="text" placeholder="Appointment Date" name="date">
-                                        <i class="fa fa-calendar"></i>
+                                </div>
+                                <h3><a href="staff-page.html">Dr. Mangle Taleebin</a></h3>
+                                <p>Surgeon</p>
+                            </div>
+                            <div class="item">
+                                <div class="pic">
+                                    <img src="pic/doctor-2.jpg" width="270" height="270" alt="Dr. Brick Wall">
+                                    <div class="links">
+                                        <ul>
+                                            <li><a href="#" class="fa fa-skype"></a></li>
+                                            <li><a href="#" class="fa fa-twitter"></a></li>
+                                            <li><a href="#" class="fa fa-facebook"></a></li>
+                                        </ul>
                                     </div>
-                                    <div class="row">
-                                        <textarea cols="30" rows="5" placeholder="Message" name="message"></textarea>
-                                        <i class="fa fa-align-left"></i>
+                                </div>
+                                <h3><a href="staff-page.html">Dr. Brick Wall</a></h3>
+                                <p>Dermatologist</p>
+                            </div>
+                            <div class="item">
+                                <div class="pic">
+                                    <img src="pic/doctor-4.jpg" width="270" height="270" alt="Dr. Mangle Taleebin">
+                                    <div class="links">
+                                        <ul>
+                                            <li><a href="#" class="fa fa-skype"></a></li>
+                                            <li><a href="#" class="fa fa-twitter"></a></li>
+                                            <li><a href="#" class="fa fa-facebook"></a></li>
+                                        </ul>
                                     </div>
-                                    <div class="clearfix captcha">
-                                        <button type="submit" class="button" value="Submit">Send Message</button>
+                                </div>
+                                <h3><a href="staff-page.html">Dr. Mangle Taleebin</a></h3>
+                                <p>Surgeon</p>
+                            </div>
+                            <div class="item">
+                                <div class="pic">
+                                    <img src="pic/doctor-3.jpg" width="270" height="270" alt="Dr. Sno White">
+                                    <div class="links">
+                                        <ul>
+                                            <li><a href="#" class="fa fa-skype"></a></li>
+                                            <li><a href="#" class="fa fa-twitter"></a></li>
+                                            <li><a href="#" class="fa fa-facebook"></a></li>
+                                        </ul>
                                     </div>
-                                </fieldset>
-                            </form>
-                        </section>
-                        <!--/ appointment -->   
-                    </div>
+                                </div>
+                                <h3><a href="staff-page.html">Dr. Sno White</a></h3>
+                                <p>Neorologist</p>
+                            </div>
+                            <div class="item">
+                                <div class="pic">
+                                    <img src="pic/doctor-1.jpg" width="270" height="270" alt="Dr. Butcher House">
+                                    <div class="links">
+                                        <ul>
+                                            <li><a href="#" class="fa fa-skype"></a></li>
+                                            <li><a href="#" class="fa fa-twitter"></a></li>
+                                            <li><a href="#" class="fa fa-facebook"></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <h3><a href="staff-page.html">Dr. Butcher House</a></h3>
+                                <p>Ophthomologist</p>
+                            </div>
+                        </div>
+                    </section>
+                    <!--/ doctors carousel -->
                 </div>
+                
+              
+
+
+
             </main>
             <!--/ page content -->
 
