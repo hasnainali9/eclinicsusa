@@ -19,6 +19,7 @@ class CreateCommentsTable extends Migration
             $table->string('email');
             $table->string('comment');
             $table->integer('reply')->default(0);
+            $table->boolean('status')->default(true);
             $table->timestamps();
         });
     }

@@ -21,7 +21,7 @@ class CreateBlogsTable extends Migration
             $table->text('image');
             $table->integer('category_id')->unsigned();
             $table->foreign('category_id')->references('id')->on('categories');
-
+            $table->boolean('status')->default(true);
             $table->timestamps();
         });
     }
