@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{GetSettingData('web_title')}}</title>
 
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
@@ -25,7 +25,7 @@
                         <!-- logo -->
                         <section id="logo" class="logo">
                             <div>
-                                <a href="index.html"><img src="/images/frontend/blue/logo.png" alt="Clinico"></a>
+                                <a href="{{url('/')}}"><img src="{{url('/')}}{{urldecode(GetSettingData('web_logo_dark'))}}" alt="{{GetSettingData('web_title')}}"></a>
                             </div>
                         </section>
                         <!--/ logo -->
@@ -47,28 +47,27 @@
                 <a href="#" id="top-link" class="top-link"><i class="fa fa-angle-double-up"></i></a>
                 
                 <div class="grid-row">
-                    <div class="grid-col grid-col-3">
+                    <div class="grid-col grid-col-4">
                         <!-- last news -->
                         <section class="widget-alt">
-                            <div class="widget-icon"></div>
+                            <div class="widget-icon"><img src="{{url('/')}}{{urldecode(GetSettingData('web_logo_light'))}}" alt="Ezmd logo"></div>
                             <div class="widget-title"></div>
                             <ul>
-                                <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sollicitudin justo non odio molestie, sed venenatis elit, consectetur adipiscing.</li>
+                                <li>{{urldecode(GetSettingData('web_footer_content'))}}</li>
                             </ul>
                         </section>
                         <!--/ last news -->
                     </div>
                     
-                    <div class="grid-col grid-col-3">
+                    <div class="grid-col grid-col-4">
                         <!-- location -->
                         <section class="widget-alt location">
                             <div class="widget-icon"></div>
                             <div class="widget-title">Location</div>
-                            <address>Address will be appear here, some details here City Name, Country.</address>
+                            <address>{{urldecode(GetSettingData('web_address'))}}</address>
                             <ul>
-                                <li><i class="fa fa-phone"></i>(907) 555-55555</li>
-                                <li><i class="fa fa-at">@</i>company@youremail.com</li>
-                                <li><i class="fa fa-skype"></i>Medical Skype Name</li>
+                                <li><i class="fa fa-phone"></i>{{GetSettingData('web_phone_no')}}</li>
+                                <li><i class="fa fa-at">@</i>{{GetSettingData('web_footer_email')}}</li>
                             </ul>
                             <nav>
                                 <a href="#" class="fa fa-twitter"></a>
@@ -79,7 +78,7 @@
                         <!--/ location -->  
                     </div>
                     
-                    <div class="grid-col grid-col-3">
+                    <div class="grid-col grid-col-4">
                         <!-- last news -->
                         <section class="widget-alt recent-posts">
                             <div class="widget-icon"></div>
@@ -101,37 +100,12 @@
                         </section>
                         <!--/ last news -->                     
                     </div>
-                    
-                    <div class="grid-col grid-col-3">
-                        <!-- work time -->
-                        <section class="widget-alt work-time">
-                            <div class="widget-icon"></div>
-                            <dl>
-                                <dt>Mon</dt>
-                                <dd>08:00 am - 12:00 pm</dd>
-                                <dt>Tue</dt>
-                                <dd>01:00 am - 05:00 pm</dd>
-                                <dt>Wed</dt>
-                                <dd>Free day</dd>
-                                <dt>Thu</dt>
-                                <dd>08:00 am - 12:00 pm</dd>
-                                <dt>Fri</dt>
-                                <dd>08:00 am - 12:00 pm</dd>
-                                <dt>Sat</dt>
-                                <dd>08:00 am - 12:00 pm</dd>
-                                <dt>Sun</dt>
-                                <dd>Free day</dd>
-                            </dl>
-                            <a href="#" class="button">Make an Appointment</a>
-                        </section>
-                        <!--/ work time -->                         
-                    </div>
                 </div>
             </footer>
             <!--/ page footer -->
             
             <!-- copyrights -->
-            <div class="copyrights">Copyrights ©2014: Clinico - Responsive Medical and Health Template</div>
+            <div class="copyrights">{{urldecode(GetSettingData('web_copyright'))}}</div>
             <!--/ copyrights -->
 </div>
         <script type="text/javascript" src="/js/frontend/jquery.min.js"></script>

@@ -20,6 +20,7 @@ class CreateServicesTable extends Migration
             $table->text('icon');
             $table->text('image');
             $table->longText('content');
+            $table->boolean('featured')->default(false);
             $table->boolean('status')->default(true);
             $table->timestamps();
         });

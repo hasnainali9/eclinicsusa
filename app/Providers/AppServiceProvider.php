@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use App\Models\Navbar;
 use App\Models\Slider;
+use App\Models\SubService;
 use View;
 
 class AppServiceProvider extends ServiceProvider
@@ -30,7 +31,8 @@ class AppServiceProvider extends ServiceProvider
         {
             $navbars = Navbar::where('submenu',0)->orderBy('order')->get();
             $sliders=Slider::all();
-            $view->with(['navbars'=>$navbars,'sliders'=>$sliders]);
+            $SubService=SubService::all();
+            $view->with(['navbars'=>$navbars,'sliders'=>$sliders,'subServices'=>$SubService]);
         });
     }
 }
