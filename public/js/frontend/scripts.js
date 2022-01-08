@@ -341,8 +341,26 @@ $(function()
 		itemsMobile: [479,1],
 		navigation: true,
 		navigationText: ['<i class="fa fa-angle-left"></i>','<i class="fa fa-angle-right"></i>'],
-		pagination: false
+		pagination: false,
+		loop:true,
+		autoPlay:true,
+		autoPlayInterval:800,
   });
+
+		$('#testimonial-carousel').owlCarousel({
+			items: 1,
+			itemsDesktop: false,
+			itemsDesktopSmall: false,
+			itemsTablet: [980,3],
+			itemsTabletSmall: [767,2],
+			itemsMobile: [479,1],
+			navigation: true,
+			navigationText: ['<i class="fa fa-angle-left"></i>','<i class="fa fa-angle-right"></i>'],
+			pagination: false,
+			loop:true,
+			autoPlay:true,
+			autoPlayInterval:800,
+		});
 
 	/**/
 	/* wellness doctors carousel */
@@ -702,78 +720,58 @@ $(window).load(function()
 
 
 function contact_form_init(){
-		if($('#contactform').length) {
-
-			var $form = $('#contactform'),
-			$loader = '<img src="php/preloader.gif" alt="Loading..." />';
+	$('#contactform').on('submit',function(e){
+        e.preventDefault();
+		$(".wpb_alert").remove();
+		var $form = $('#contactform'),
+		$loader = '  <i class="fas fa-stroopwafel fa-spin"></i>';
 			$form.find("fieldset").prepend('<div id="contact_form_responce">');
+		var $response = $('#contact_form_responce');
+		$response.append("<div class='wpb_alert'><div class='messagebox_text clearfix'><h1></h1><p></p></div></div>");
+		$response.css("display","none");
 
-			var $response = $('#contact_form_responce');
-			$response.append("<div class='wpb_alert'><div class='messagebox_text clearfix'><h1></h1><p></p></div></div>");
-			$response.css("display","none");
 
-			$form.submit(function(e){
-				$response.css("display","block");
+        $.ajax({
+          url: $('#contactform').attr('action'),
+          type:"POST",
+          data:$(this).serialize(),
+		  beforeSend:function(){
+			$('#contactform').find('input').prop('disabled', true);
+			$('#contactform').find('button').prop('disabled', true);
+			$('#contactform').find('textarea').prop('disabled', true);
+			
+			$response.css("display","block");
 				$response.find('p').html($loader);
-
-				var data = {
-					action: "contact_form_request",
-					values: $("#contactform").serialize()
-				};
-
-				//send data to server
-				$.post("php/contact-send.php", data, function(response) {
-
-					response = $.parseJSON(response);
-					
-					$(".wrong-data").removeClass("wrong-data");
-					$response.find('img').remove();
-
-					if(response.is_errors){
-						$response.find('.wpb_alert').removeClass().addClass('wpb_alert');
-						$.each(response.info,function(input_name, input_label) {
-
-							$("[name="+input_name+"]").addClass("wrong-data");
-							$response.find('p').append(input_label+ '</br>');
-						});
-
-					} else {
-						if(response.info == 'success'){
-							$response.find('.wpb_alert').removeClass().addClass('wpb_alert wpb_alert_confirm');
+		  },
+          success:function(response){
+				$('#contactform').find('input').prop('disabled', false);
+				$('#contactform').find('button').prop('disabled', false);
+				$('#contactform').find('textarea').prop('disabled', false);
+				$('#contactform').find('input').val('');
+				$('#contactform').find('button').val('');
+				$('#contactform').find('textarea').val('');
+				$response.find('.wpb_alert').removeClass().addClass('wpb_alert wpb_alert_confirm');
 							$response.find('p').append('Your message has been successfully sent!');
 								$response.find('p').delay(5000).hide(500, function(){
 									$(this).removeClass().text("").fadeIn(500);
 									$response.css("display","none");
 								})
 								$form.find('input:not(input[type="submit"], button), textarea, select').val('').attr( 'checked', false );
-						}
+          },
+          error: function(response) {
+			$response.find('p').html('');
+			$('#contactform').find('input').prop('disabled', false);
+			$('#contactform').find('button').prop('disabled', false);
+			$('#contactform').find('textarea').prop('disabled', false);
+			$response.find('.wpb_alert').removeClass().addClass('wpb_alert');
+			$.each(response.responseJSON.errors,function(input_name, input_label) {
+				$("[name="+input_name+"]").addClass("wrong-data");
+				$response.find('p').append(input_label+ '</br>');
+			});
 
-						if(response.info == 'server_fail'){
-							$response.find('.wpb_alert').removeClass().addClass('wpb_alert wpb_alert_error');
-							$response.find('p').append('Server failed. Send later!');
-						}
-					}
-
-					// Scroll to bottom of the form to show respond message
-					var topPosition = $("#contact_form_responce").offset().top;
-
-					if(($(document).scrollTop()-$(document).height()) < topPosition) {
-						$('html, body').animate({
-							scrollTop : topPosition
-						});
-					}
-
-					if(!$('#contact_form_responce').css('display') == 'block') {
-						$response.show(450);
-					}
-
-				});
-
-				e.preventDefault();
-
-			});				
-
-		}
+           }
+         });
+        });
 }
 
 /* COMPOSER */

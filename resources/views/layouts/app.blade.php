@@ -14,6 +14,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/frontend/styles.css') }}" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/c73e5b346d.js" crossorigin="anonymous"></script>
 </head>
 <body>
 
@@ -134,9 +135,6 @@
         <script type="text/javascript" src="/js/frontend/jquery-ui-tabs-rotate.js"></script>
         <script type="text/javascript" src="/js/frontend/jquery.ui.accordion.min.js"></script>
         <script type="text/javascript" src="/js/frontend/jquery.tweet.js"></script>
-    <!-- EASYPIECHART -->
-        <script type="text/javascript" src="/js/frontend/jquery.easypiechart.js"></script>
-    <!--/ EASYPIECHART -->
         <script type="text/javascript" src="/js/frontend/jquery.autocomplete.min.js"></script>
         <script type="text/javascript" src="/js/frontend/scripts.js"></script>
 </body>

@@ -16,6 +16,22 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+Route::get('/pricing', function () {
+    return view('plans.pricing');
+});
+Route::get('/why-us', function () {
+    return view('plans.pricing');
+});
+Route::get('/about-us', function () {
+    return view('plans.pricing');
+});
+Route::get('/contact-us', function () {
+    return view('contact.contact');
+});
+
+Route::post('/contact-us/send', [App\Http\Controllers\ContactController::class, 'store'])->name('contact.store');
+
 Auth::routes(['register'=>false]);
 
 

@@ -6,6 +6,8 @@ use Illuminate\Support\ServiceProvider;
 use App\Models\Navbar;
 use App\Models\Slider;
 use App\Models\SubService;
+use App\Models\Testimonial;
+use App\Models\Service;
 use View;
 
 class AppServiceProvider extends ServiceProvider
@@ -32,7 +34,17 @@ class AppServiceProvider extends ServiceProvider
             $navbars = Navbar::where('submenu',0)->orderBy('order')->get();
             $sliders=Slider::all();
             $SubService=SubService::all();
-            $view->with(['navbars'=>$navbars,'sliders'=>$sliders,'subServices'=>$SubService]);
+            $Testimonials=Testimonial::all();
+            $featuredServices=Service::where('featured',true)->get();
+            $Services=Service::where('featured',false)->get();
+            $view->with([
+                        'navbars'=>$navbars,
+                        'sliders'=>$sliders,
+                        'subServices'=>$SubService, 
+                        'testimonials'=>$Testimonials,
+                        'featuredServices'=>$featuredServices,
+                        'services'=>$Services,
+                    ]);
         });
     }
 }
