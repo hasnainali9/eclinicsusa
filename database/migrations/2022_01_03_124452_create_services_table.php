@@ -18,7 +18,7 @@ class CreateServicesTable extends Migration
             $table->string('title');
             $table->text('short_description');
             $table->text('icon');
-            $table->text('image');
+            $table->longtext('image');
             $table->longText('content');
             $table->boolean('featured')->default(false);
             $table->boolean('status')->default(true);

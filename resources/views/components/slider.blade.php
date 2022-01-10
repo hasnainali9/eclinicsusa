@@ -28,7 +28,7 @@
             }    
             @endphp
             <div class="ls-slide" data-ls="transition2d:9;slidedelay:7000;">                    
-                <img src="{{urldecode($slide->image)}}" alt="" class="ls-bg">
+                <img src="{{$slide->image}}" alt="" class="ls-bg">
                 
                 <div class="intro ls-l" data-ls="offsetyin:top;offsetxin:0;durationin:2000;offsetyout:bottom;offsetxout:0;durationout:1000;" style=" left:80%;top:35%; background:{{$even===true?'#18333F':'white'}}!important;">
                     <h2 style="color:{{$even===true?'white':'#18323f'}}!important;"><span>{{$slide->title}}</span></h2>

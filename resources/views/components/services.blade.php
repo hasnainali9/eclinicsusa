@@ -7,7 +7,7 @@
                 <a class="pic"><i class="{{$service->icon}}"></i></a>
                 <h2><a href="#">{{$service->title}}</a></h2>
                 <p>{!!urldecode($service->short_description)!!}</p>
-                <a href="#" class="more fa fa-long-arrow-right"></a>
+                <a href="{{url('/')}}/s/{{base64_encode($service->id)}}" class="more fa fa-long-arrow-right"></a>
             </li>
             @endif
         @endforeach

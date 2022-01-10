@@ -6,7 +6,7 @@
         @if($service->status)
         <div class="item">
             <div class="pic">
-                <img src="{{urldecode($service->image)}}" width="270" height="270" alt="{{$service->title}}">
+                <img src="{{$service->image}}" width="270" height="270" alt="{{$service->title}}">
             </div>
             <h3><a href="javascript:;">{{$service->title}}</a></h3>
             <p>{{urldecode($service->short_description)}}</p>

@@ -19,6 +19,7 @@ class CreateNavbarsTable extends Migration
             $table->text('slug');
             $table->bigInteger('order');
             $table->bigInteger('submenu')->default(0);
+            $table->boolean('is_default')->default(true);
             $table->boolean('status')->default(true);
             $table->timestamps();
         });

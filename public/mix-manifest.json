@@ -1,6 +1,4 @@
 {
-    "/js/app.js": "/js/app.js",
-    "/css/styles.css": "/css/styles.css",
     "/css/frontend/styles.css": "/css/frontend/styles.css",
     "/js/frontend/greensock.js": "/js/frontend/greensock.js",
     "/js/frontend/html5.js": "/js/frontend/html5.js",
@@ -28,8 +26,9 @@
     "/js/frontend/scripts.js": "/js/frontend/scripts.js",
     "/js/frontend/TimelineMax.min.js": "/js/frontend/TimelineMax.min.js",
     "/js/frontend/TweenMax.min.js": "/js/frontend/TweenMax.min.js",
+    "/images/default_logo_dark.svg": "/images/default_logo_dark.svg",
+    "/images/default_logo_light.svg": "/images/default_logo_light.svg",
     "/images/ez.svg": "/images/ez.svg",
-    "/images/logo.svg": "/images/logo.svg",
     "/images/frontend/blank.gif": "/images/frontend/blank.gif",
     "/images/frontend/fancybox_loading.gif": "/images/frontend/fancybox_loading.gif",
     "/images/frontend/fancybox_loading@2x.gif": "/images/frontend/fancybox_loading@2x.gif",

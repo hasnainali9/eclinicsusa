@@ -11,9 +11,7 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js')
-    .combine(['resources/css/style.css','resources/css/perfect-scrollbar.css'], 'public/css/styles.css')
-    .combine(['resources/frontend/css/layerslider.css',
+mix.combine(['resources/frontend/css/layerslider.css',
             'resources/frontend/css/fullwidth/skin.css',
             'resources/frontend/css/owl.carousel.css',
             'resources/frontend/css/jquery.fancybox.css',
@@ -21,8 +19,7 @@ mix.js('resources/js/app.js', 'public/js')
             'resources/frontend/css/color-blue.css'
         ], 'public/css/frontend/styles.css')
     .copyDirectory('resources/frontend/js', 'public/js/frontend')
+    .copyDirectory('resources/back', 'public/back')
     .copyDirectory('resources/images','public/images')
     .copyDirectory('resources/frontend/img','public/images/frontend')
-    .copyDirectory('resources/icons','public/icons')
-    .copyDirectory('resources/vendor','public/vendor')
     .sourceMaps();

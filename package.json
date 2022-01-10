@@ -19,5 +19,10 @@
         "resolve-url-loader": "^4.0.0",
         "sass": "^1.32.11",
         "sass-loader": "^11.0.1"
+    },
+    "dependencies": {
+        "bootstrap-select": "^1.13.18",
+        "jquery": "^3.4.1",
+        "perfect-scrollbar": "^1.4.0"
     }
 }

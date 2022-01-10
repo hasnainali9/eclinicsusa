@@ -17,7 +17,7 @@ class CreateSubServicesTable extends Migration
             $table->id();
             $table->string('title');
             $table->text('short_description');
-            $table->text('image');
+            $table->longtext('image');
              $table->boolean('status')->default(true);
             $table->timestamps();
         });

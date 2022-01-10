@@ -10,7 +10,7 @@
                             <div class="col-xl-12">
                                 <div class="auth-form">
                                     <div class="text-center mb-3">
-                                        <img src="/images/logo.svg" alt="">
+                                        <img src="{{url('/')}}{{urldecode(GetSettingData('web_logo_dark'))}}" alt="{{GetSettingData('web_title')}}">
                                     </div>
                                     <h4 class="text-center mb-4">{{ __('Sign in your account') }}</h4>
                                     <form action="{{ route('login') }}" method="POST">

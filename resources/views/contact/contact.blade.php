@@ -7,7 +7,7 @@
         <h1>Contacts</h1>
         
         <nav class="bread-crumbs">
-            <a href="index.html">Home</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;
+            <a href="{{route('welcome')}}">Home</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;
             <a href="#">Contacts</a>
         </nav>
     </div>

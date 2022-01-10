@@ -19,31 +19,43 @@ class NavbarSeeder extends Seeder
                 'name' => "Home",
                 'slug' => '/',
                 'order' => '0',
+                'is_default'=>true
             ],
             [
                 'name' => "Solutions",
-                'slug' => '/services',
+                'slug' => '#',
                 'order' => '1',
+                'is_default'=>true
             ],
             [
                 'name' => "Pricing",
                 'slug' => '/pricing',
                 'order' => '2',
+                'is_default'=>true
+            ],
+            [
+                'name' => "Blog",
+                'slug' => '/blg',
+                'order' => '3',
+                'is_default'=>true
             ],
             [
                 'name' => "Why Us?",
-                'slug' => '/why-us',
-                'order' => '3',
+                'slug' => '/p/why-us',
+                'order' => '4',
+                'is_default'=>true
             ],
             [
                 'name' => "About Us",
-                'slug' => '/about-us',
-                'order' => '4',
+                'slug' => '/p/about-us',
+                'order' => '5',
+                'is_default'=>true
             ],
             [
                 'name' => "Contact Us",
                 'slug' => '/contact-us',
-                'order' => '5',
+                'order' => '6',
+                'is_default'=>true
             ],
             
         ]);
