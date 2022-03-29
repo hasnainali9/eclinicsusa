@@ -96,15 +96,8 @@
                                 </div>
                             </a>
                             <div class="dropdown-menu dropdown-menu-end">
-                                <a href="./app-profile.html" class="dropdown-item ai-icon">
-                                    <svg id="icon-user1" xmlns="http://www.w3.org/2000/svg" class="text-primary" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-                                    <span class="ms-2">Profile </span>
-                                </a>
-                                <a href="./email-inbox.html" class="dropdown-item ai-icon">
-                                    <svg id="icon-inbox" xmlns="http://www.w3.org/2000/svg" class="text-success" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-                                    <span class="ms-2">Inbox </span>
-                                </a>
-                                <a href="./page-login.html" class="dropdown-item ai-icon">
+                                
+                                <a href="javascript:;" onclick='document.getElementById("logout").submit()' class="dropdown-item ai-icon">
                                     <svg id="icon-logout" xmlns="http://www.w3.org/2000/svg" class="text-danger" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
                                     <span class="ms-2">Logout </span>
                                 </a>
@@ -138,12 +131,6 @@
                 <p class="email">{{Auth::User()->email}}</p>
             </div>
             <ul class="metismenu" id="menu">
-                <li class="nav-label first">Main Menu</li>
-                <li><a class=" ai-icon" href="{{route('home')}}" aria-expanded="false">
-                        <i class="flaticon-144-layout"></i>
-                        <span class="nav-text">Dashboard</span>
-                    </a>
-                </li>
                 <li class="nav-label">Website Settings</li>
                 <li><a class=" ai-icon" href="{{route('home.sliders')}}" aria-expanded="false">
                         <i class="flaticon-144-layout"></i>
@@ -155,98 +142,37 @@
                         <span class="nav-text">Services</span>
                     </a>
                     <ul aria-expanded="false">
-                        <li><a href="./app-profile.html">Profile</a></li>
-                        <li><a href="./post-details.html">Post Details</a></li>
-                        <li><a href="./page-chat.html">Chat<span class="badge badge-xs badge-danger">New</span></a></li>
-                        <li><a class="has-arrow" href="javascript:void(0);" aria-expanded="false">Project<span class="badge badge-xs badge-danger">New</span></a>
-                            <ul aria-expanded="false">
-                                <li><a href="./project-list.html">Project List</a></li>
-                                <li><a href="./project-card.html">Project Card</a></li>
-                            </ul>
-                        </li>
-                        <li><a class="has-arrow" href="javascript:void(0);" aria-expanded="false">User<span class="badge badge-xs badge-danger">New</span></a>
-                            <ul aria-expanded="false">
-                                <li><a href="./user-list-datatable.html">User List</a></li>
-                                <li><a href="./user-list-column.html">User Card</a></li>
-                            </ul>
-                        </li>
-                        <li><a class="has-arrow" href="javascript:void(0);" aria-expanded="false">Contact<span class="badge badge-xs badge-danger">New</span></a>
-                            <ul aria-expanded="false">
-                                <li><a href="./contact-list.html">Contact List</a></li>
-                                <li><a href="./contact-card.html">Contact Card</a></li>
-                            </ul>
-                        </li>
-                        <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Email</a>
-                            <ul aria-expanded="false">
-                                <li><a href="./email-compose.html">Compose</a></li>
-                                <li><a href="./email-inbox.html">Inbox</a></li>
-                                <li><a href="./email-read.html">Read</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="./app-calender.html">Calendar</a></li>
-                        <li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Shop</a>
-                            <ul aria-expanded="false">
-                                <li><a href="./ecom-product-grid.html">Product Grid</a></li>
-                                <li><a href="./ecom-product-list.html">Product List</a></li>
-                                <li><a href="./ecom-product-detail.html">Product Details</a></li>
-                                <li><a href="./ecom-product-order.html">Order</a></li>
-                                <li><a href="./ecom-checkout.html">Checkout</a></li>
-                                <li><a href="./ecom-invoice.html">Invoice</a></li>
-                                <li><a href="./ecom-customers.html">Customers</a></li>
-                            </ul>
-                        </li>
+                        <li><a href="{{route('home.services')}}">All Services</a></li>
+                        <li><a href="{{route('home.services.show.featured')}}">Featured Services</a></li>
+                        <li><a href="{{route('home.SubServices')}}">Sub Services</a></li>
                     </ul>
                 </li>
-                <li><a class=" ai-icon" href="{{route('home')}}" aria-expanded="false">
+                <li><a class=" ai-icon" href="{{route('home.testimonial')}}" aria-expanded="false">
                         <i class="flaticon-144-layout"></i>
                         <span class="nav-text">Testimonials</span>
                     </a>
                 </li>
-                <li><a class=" ai-icon" href="{{route('home')}}" aria-expanded="false">
+                <li><a class=" ai-icon" href="{{route('home.social')}}" aria-expanded="false">
                         <i class="flaticon-144-layout"></i>
                         <span class="nav-text">Social Links</span>
                     </a>
                 </li>
-                <li><a class=" ai-icon" href="{{route('home')}}" aria-expanded="false">
-                        <i class="flaticon-144-layout"></i>
-                        <span class="nav-text">Glocal Settings</span>
-                    </a>
-                </li>
-                <li class="nav-label">Additional Pages</li>
-                <li><a class=" ai-icon" href="{{route('home')}}" aria-expanded="false">
-                        <i class="flaticon-144-layout"></i>
-                        <span class="nav-text">Add New Page</span>
-                    </a>
-                </li>
+    
 
                 <li class="nav-label">Blog Settings</li>
-                <li><a class=" ai-icon" href="{{route('home')}}" aria-expanded="false">
+                <li><a class=" ai-icon" href="{{url('/')}}/blog/admin" aria-expanded="false">
                         <i class="flaticon-144-layout"></i>
-                        <span class="nav-text">categories</span>
+                        <span class="nav-text">Blog Panel</span>
                     </a>
                 </li>
-                <li><a class=" ai-icon" href="{{route('home')}}" aria-expanded="false">
-                        <i class="flaticon-144-layout"></i>
-                        <span class="nav-text">Tags</span>
-                    </a>
-                </li>
-                <li><a class=" ai-icon" href="{{route('home')}}" aria-expanded="false">
-                        <i class="flaticon-144-layout"></i>
-                        <span class="nav-text">Blog Post</span>
-                    </a>
-                </li>
-                <li><a class=" ai-icon" href="{{route('home')}}" aria-expanded="false">
-                        <i class="flaticon-144-layout"></i>
-                        <span class="nav-text">Comments</span>
-                    </a>
-                </li>
+                
                 <li class="nav-label">Account Settings</li>
-                <li><a class=" ai-icon" href="javascript:void()" aria-expanded="false">
-                        <i class="flaticon-144-layout"></i>
-                        <span class="nav-text">Profile</span>
-                    </a>
-                </li>
-                <li><a class=" ai-icon" href="javascript:void()" aria-expanded="false">
+                <li>
+                    <form method="POST" style="display: none" id="logout" action="{{ route('logout') }}">
+                        @csrf
+                        <button type="submit">Logout</button>
+                      </form>
+                    <a class=" ai-icon" onclick='document.getElementById("logout").submit()' href="javascript:void()" aria-expanded="false">
                         <i class="flaticon-144-layout"></i>
                         <span class="nav-text">Logout</span>
                     </a>
@@ -316,6 +242,26 @@
                         showMethod: "fadeIn",
                         hideMethod: "fadeOut"
                     });   
+            @endif
+            @if($errors->any())
+            toastr.error("{{$errors->first()}}", "Top Right", {
+                    positionClass: "toast-top-right",
+                    timeOut: 5e3,
+                    closeButton: !0,
+                    debug: !1,
+                    newestOnTop: !0,
+                    progressBar: !0,
+                    preventDuplicates: !0,
+                    onclick: null,
+                    showDuration: "300",
+                    hideDuration: "1000",
+                    extendedTimeOut: "1000",
+                    showEasing: "swing",
+                    hideEasing: "linear",
+                    showMethod: "fadeIn",
+                    hideMethod: "fadeOut",
+                    tapToDismiss: !1
+                })
             @endif
 		});
 	</script>

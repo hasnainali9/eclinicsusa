@@ -163,7 +163,8 @@
                                         <input type="file" name="image" class="form-file-input form-control">
                                     </div>
                                 </div>
-                                <img src="" alt="Previous Uploaded Image" id="edit_image">
+                                <small>Note: Upload Image only if you want to update it.</small>
+                                <img src="" alt="Previous Uploaded Image" style="width: -webkit-fill-available;" id="edit_image">
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-danger light" data-bs-dismiss="modal">Close</button>
@@ -193,24 +194,26 @@
                     console.error( err.stack );
                 } );
             }
+
             if(jQuery("#ckeditor1").length>0) {
-                ClassicEditor
-                .create( document.querySelector( '#ckeditor1' ), {
-                    // toolbar: [ 'heading', '|', 'bold', 'italic', 'link' ]
-                } )
-                .then( editor => {
-                    window.editor = editor;
-                } )
-                .catch( err => {
-                    console.error( err.stack );
-                } );
+                        ClassicEditor
+                        .create( document.querySelector( '#ckeditor1' ), {
+                            // toolbar: [ 'heading', '|', 'bold', 'italic', 'link' ]
+                        } )
+                        .then( editor => {
+                            window.editor1 = editor;
+                        } )
+                        .catch( err => {
+                            console.error( err.stack );
+                        } );
             }
 
             $('body').delegate('.edit_data','click',function(){
                     $('#edit_id').val($(this).attr('data-id'));
-                    $('#edit_title').val($(this).attr('data-title'));
-                    $('#ckeditor1').code($(this).attr('data-content'));
+                    $('#title_edit').val($(this).attr('data-title'));
+                    window.editor1.setData($(this).attr('data-content'));
                     $('#edit_image').attr('src',$(this).attr('data-image'));
+                    
                     $("#editSliderModal").modal('toggle');
             });
 

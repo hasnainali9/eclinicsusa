@@ -35,7 +35,7 @@ class NavbarSeeder extends Seeder
             ],
             [
                 'name' => "Blog",
-                'slug' => '/blg',
+                'slug' => '/en/blog',
                 'order' => '3',
                 'is_default'=>true
             ],

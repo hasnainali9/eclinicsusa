@@ -14,6 +14,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/frontend/styles.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/c73e5b346d.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -60,12 +61,12 @@
                         <!--/ last news -->
                     </div>
                     
-                    <div class="grid-col grid-col-4">
+                    <div class="grid-col grid-col-8">
                         <!-- location -->
                         <section class="widget-alt location">
                             <div class="widget-icon"></div>
                             <div class="widget-title">Location</div>
-                            <address>{{urldecode(GetSettingData('web_address'))}}</address>
+                            <address>{!!urldecode(GetSettingData('web_address'))!!}</address>
                             <ul>
                                 <li><i class="fa fa-phone"></i>{{GetSettingData('web_phone_no')}}</li>
                                 <li><i class="fa fa-at">@</i>{{GetSettingData('web_footer_email')}}</li>
@@ -79,28 +80,7 @@
                         <!--/ location -->  
                     </div>
                     
-                    <div class="grid-col grid-col-4">
-                        <!-- last news -->
-                        <section class="widget-alt recent-posts">
-                            <div class="widget-icon"></div>
-                            <div class="widget-title">Recent Posts</div>
-                            <ul>
-                                <li>
-                                    <a href="#"><img src="pic/post/1.png" width="80" height="80" alt=""></a>
-                                    <p><a href="#">New study links lutein with eye health benefits, consectetur adipiscing</a><br>5 months ago</p>
-                                </li>
-                                <li>
-                                    <a href="#"><img src="pic/post/2.png" width="80" height="80" alt=""></a>
-                                    <p><a href="#">Pets may reduce risk of heart disease, et congue dolor heart</a><br>8 months ago</p>
-                                </li>
-                                <li>
-                                    <a href="#"><img src="pic/post/3.png" width="80" height="80" alt=""></a>
-                                    <p><a href="#">Discoveries offer a new explanation for diabetes, consectetur</a><br>10 months ago</p>
-                                </li>
-                            </ul>
-                        </section>
-                        <!--/ last news -->                     
-                    </div>
+                   
                 </div>
             </footer>
             <!--/ page footer -->
@@ -137,5 +117,6 @@
         <script type="text/javascript" src="/js/frontend/jquery.tweet.js"></script>
         <script type="text/javascript" src="/js/frontend/jquery.autocomplete.min.js"></script>
         <script type="text/javascript" src="/js/frontend/scripts.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
 </html>

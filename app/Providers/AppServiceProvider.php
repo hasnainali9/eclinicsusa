@@ -8,6 +8,7 @@ use App\Models\Slider;
 use App\Models\SubService;
 use App\Models\Testimonial;
 use App\Models\Service;
+use App\Models\Page;
 use View;
 
 class AppServiceProvider extends ServiceProvider
@@ -37,6 +38,7 @@ class AppServiceProvider extends ServiceProvider
             $Testimonials=Testimonial::all();
             $featuredServices=Service::where('featured',true)->get();
             $Services=Service::where('featured',false)->get();
+            $pages=Page::all();
             $view->with([
                         'navbars'=>$navbars,
                         'sliders'=>$sliders,
@@ -44,6 +46,7 @@ class AppServiceProvider extends ServiceProvider
                         'testimonials'=>$Testimonials,
                         'featuredServices'=>$featuredServices,
                         'services'=>$Services,
+                        'pages'=>$pages
                     ]);
         });
     }
